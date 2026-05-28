@@ -1,0 +1,13 @@
+User-agent: *
+Allow: /
+
+# Ferramentas Online - Prioridade Alta
+Allow: /ferramentas
+Allow: /ferramentas/*
+
+# Sitemap
+Sitemap: https://softechservicos.vercel.app/sitemap.xml
+Sitemap: https://softechservicos.vercel.app/ferramentas/sitemap.xml
+
+# Crawl-delay para não sobrecarregar
+Crawl-delay: 1
