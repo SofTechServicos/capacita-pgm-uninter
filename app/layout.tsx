@@ -7,9 +7,9 @@ import { Toaster } from 'react-hot-toast'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'SofTech - Soluções em Tecnologia',
-  description: 'Otimizando Processos. Simplificando a Tecnologia.',
-  keywords: 'tecnologia, suporte técnico, sites, formatação, impressão, Paragominas',
+  title: 'Capacita PGM - Projeto Extensionista UNINTER',
+  description: 'Hub de oportunidades de capacitação focado na população de Paragominas - PA.',
+  keywords: 'capacitação, cursos, paragominas, uninter, projeto de extensão',
   verification: {
     google: '9HPqm_zrbMSTUNAgy2vtbyCUWF0YUdC2M1pTN_ygKTA',
   },
