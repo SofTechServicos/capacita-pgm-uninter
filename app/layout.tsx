@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
 import { Toaster } from 'react-hot-toast'
+import Header from '../components/Header'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -28,6 +29,7 @@ export default function RootLayout({
   return (
     <html lang="pt-br">
       <body className={`${inter.className} bg-deep-dark text-slate-300 bg-grid-pattern bg-grid-size antialiased selection:bg-accent-cyan selection:text-white`}>
+          <Header />
           <main className="min-h-screen">
             {children}
           </main>
