@@ -9,7 +9,15 @@ import FeedbackWidget from '../components/FeedbackWidget'
 import { CapacitaPGMAnalytics } from '../lib/analytics'
 import { GeoAnalytics } from '../lib/geo-analytics'
 
-// ... (todo o restante do código do seu arquivo 'app/capacita-pgm/page.tsx' original vai aqui, sem nenhuma alteração)
-// O conteúdo completo já está no arquivo que você me forneceu, então é só copiar e colar.
-// A única mudança importante, que já está correta no seu arquivo, é o link para o gerador:
-// link: "/gerador" em vez de "/capacita-pgm/gerador"
+export default function Page() {
+  return (
+    <div className="min-h-screen py-24 flex flex-col items-center justify-center">
+      <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">Capacita PGM</h1>
+      <p className="text-slate-400 mb-8 text-lg">Projeto Extensionista UNINTER - Hub de Oportunidades</p>
+      
+      <Link href="/gerador" className="px-6 py-3 bg-accent-cyan text-white rounded-lg font-semibold hover:bg-opacity-80 transition-all shadow-lg">
+        Acessar Gerador de Currículos
+      </Link>
+    </div>
+  )
+}
