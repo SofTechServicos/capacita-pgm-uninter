@@ -164,8 +164,6 @@ const kitFerramentas: KitFerramenta[] = [
 export default function CapacitaPGMPage() {
   const [cursosGoverno, setCursosGoverno] = useState<CursoGoverno[]>([]);
   const [loadingGoverno, setLoadingGoverno] = useState(true);
-  const analytics = CapacitaPGMAnalytics.getInstance();
-  const geoAnalytics = GeoAnalytics.getInstance();
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -205,25 +203,7 @@ export default function CapacitaPGMPage() {
     };
 
     fetchCursosGoverno();
-
-    // Registrar visita com geolocalização
-    geoAnalytics.trackVisit('/capacita-pgm');
-
-    // Tracking de tempo na página
-    const startTime = Date.now();
-    const trackTimeInterval = setInterval(() => {
-      const timeSpent = Math.floor((Date.now() - startTime) / 1000);
-      if (timeSpent > 0 && timeSpent % 30 === 0) {
-        analytics.trackTimeOnPage('capacita-pgm', timeSpent);
-      }
-    }, 30000);
-
-    return () => {
-      const finalTime = Math.floor((Date.now() - startTime) / 1000);
-      analytics.trackTimeOnPage('capacita-pgm-final', finalTime);
-      clearInterval(trackTimeInterval);
-    };
-  }, [analytics]);
+  }, []);
 
   return (
     <div className="min-h-screen bg-deep-dark text-slate-300 bg-grid-pattern bg-grid-size">
@@ -464,7 +444,6 @@ export default function CapacitaPGMPage() {
                     href={curso.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    onClick={() => analytics.trackCourseAccess('Fundação Bradesco', curso.titulo)}
                     className="inline-block mt-auto bg-softech-blue text-white px-4 py-2 rounded-lg hover:brightness-110 transition-all duration-300 text-sm font-medium"
                   >
                     Acessar Curso Gratuito
@@ -514,7 +493,6 @@ export default function CapacitaPGMPage() {
                     href={curso.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    onClick={() => analytics.trackCourseAccess('FGV', curso.titulo)}
                     className="inline-block mt-auto bg-purple-600 text-white px-4 py-2 rounded-lg hover:brightness-110 transition-all duration-300 text-sm font-medium"
                   >
                     Acessar Curso Gratuito
@@ -578,7 +556,6 @@ export default function CapacitaPGMPage() {
                         href={curso.link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        onClick={() => analytics.trackCourseAccess('Escola Virtual Gov', curso.titulo)}
                         className="inline-block mt-auto bg-green-600 text-white px-4 py-2 rounded-lg hover:brightness-110 transition-all duration-300 text-sm font-medium"
                       >
                         Acessar Curso Gratuito
@@ -647,14 +624,6 @@ export default function CapacitaPGMPage() {
                   target={item.tipo === 'modelo' ? '_self' : '_blank'}
                   rel={item.tipo === 'modelo' ? '' : 'noopener noreferrer'}
                   download={item.tipo === 'modelo' ? true : undefined}
-                  onClick={() => {
-                    if (item.tipo === 'modelo') {
-                      analytics.trackToolDownload(item.titulo);
-                    }
-                    if (item.titulo.includes('Gerador ATS')) {
-                      analytics.trackToolDownload('Gerador Curriculo ATS (acesso)');
-                    }
-                  }}
                   className={`inline-block mt-auto text-white px-4 py-2 rounded-lg hover:brightness-110 transition-all duration-300 text-sm font-medium ${
                     item.tipo === 'guia'
                       ? 'bg-softech-blue'
