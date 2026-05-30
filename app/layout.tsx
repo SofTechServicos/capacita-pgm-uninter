@@ -6,7 +6,6 @@ import Footer from '../components/Footer'
 import WhatsAppWidget from '../components/WhatsAppWidget'
 import BackToTop from '../components/BackToTop'
 import GoogleAnalytics from '../components/GoogleAnalytics'
-import AuthSessionProvider from '../components/SessionProvider'
 import { Toaster } from 'react-hot-toast'
 
 const inter = Inter({ subsets: ['latin'] })
@@ -34,7 +33,6 @@ export default function RootLayout({
   return (
     <html lang="pt-br">
       <body className={`${inter.className} bg-deep-dark text-slate-300 bg-grid-pattern bg-grid-size antialiased selection:bg-accent-cyan selection:text-white`}>
-        <AuthSessionProvider>
           <Header />
           <main className="min-h-screen">
             {children}
@@ -44,7 +42,6 @@ export default function RootLayout({
           <BackToTop />
           <Toaster position="top-right" />
           <GoogleAnalytics GA_MEASUREMENT_ID="G-V4DBK5NVH6" />
-        </AuthSessionProvider>
       </body>
     </html>
   )
