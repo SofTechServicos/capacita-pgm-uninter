@@ -1,7 +1,6 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
-import GoogleAnalytics from '../components/GoogleAnalytics'
 import { Toaster } from 'react-hot-toast'
 
 const inter = Inter({ subsets: ['latin'] })
@@ -33,7 +32,6 @@ export default function RootLayout({
             {children}
           </main>
           <Toaster position="top-right" />
-          <GoogleAnalytics GA_MEASUREMENT_ID="G-V4DBK5NVH6" />
       </body>
     </html>
   )
