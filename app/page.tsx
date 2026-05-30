@@ -1,13 +1,6 @@
 'use client';
 
 import Link from 'next/link'
-import { motion } from 'framer-motion'
-import { useState, useEffect } from 'react'
-import { FiBookOpen, FiUsers, FiTrendingUp, FiAward, FiClock, FiTag } from 'react-icons/fi'
-// Note que os caminhos de importação foram ajustados para a nova estrutura
-import FeedbackWidget from '../components/FeedbackWidget'
-import { CapacitaPGMAnalytics } from '../lib/analytics'
-import { GeoAnalytics } from '../lib/geo-analytics'
 
 export default function Page() {
   return (
