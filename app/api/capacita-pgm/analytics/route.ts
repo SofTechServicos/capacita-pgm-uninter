@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { collection, getDocs, addDoc, query, serverTimestamp } from 'firebase/firestore';
 // ATENÇÃO: Verifique se o caminho do seu arquivo de configuração do firebase está correto
-import { db } from '@/lib/firebase'; 
+import { db } from '../../../../lib/firebase';
 
 export async function GET() {
   try {
