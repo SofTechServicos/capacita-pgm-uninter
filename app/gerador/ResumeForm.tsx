@@ -80,9 +80,9 @@ const ResumeForm: React.FC<Props> = ({ onDataChange }) => {
   }, [dadosPessoais, resumo, experiencias, formacoes, habilidades, onDataChange]);
 
   // handlers for dynamic lists
-  const updateExperience = (idx: number, field: keyof Experiencia, value: any) => {
+  const updateExperience = <K extends keyof Experiencia>(idx: number, field: K, value: Experiencia[K]) => {
     const list = [...experiencias];
-    (list[idx] as any)[field] = value;
+    list[idx][field] = value;
     setExperiencias(list);
     handleChange();
   };
@@ -107,9 +107,9 @@ const ResumeForm: React.FC<Props> = ({ onDataChange }) => {
     handleChange();
   };
 
-  const updateFormacao = (idx: number, field: keyof Formacao, value: any) => {
+  const updateFormacao = <K extends keyof Formacao>(idx: number, field: K, value: Formacao[K]) => {
     const list = [...formacoes];
-    (list[idx] as any)[field] = value;
+    list[idx][field] = value;
     setFormacoes(list);
     handleChange();
   };
@@ -407,8 +407,8 @@ const ResumeForm: React.FC<Props> = ({ onDataChange }) => {
                     checked={!!(exp as any).atual}
                     onChange={e => {
                       const list = [...experiencias];
-                      (list[idx] as any).atual = e.target.checked;
-                      if (e.target.checked) (list[idx] as any).dataFim = '';
+                      list[idx].atual = e.target.checked;
+                      if (e.target.checked) list[idx].dataFim = '';
                       setExperiencias(list);
                       handleChange();
                     }}
