@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { CurriculoATS } from '../../../types/ats';
+import { CurriculoATS } from '../../types/ats';
 import { FileText } from 'lucide-react';
 
 interface Props {
