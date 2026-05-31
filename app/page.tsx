@@ -157,7 +157,7 @@ const kitFerramentas: KitFerramenta[] = [
     tipo: 'guia',
     titulo: "Gerador ATS: Currículo em PDF",
     descricao: "Preencha um formulário e baixe seu currículo formatado para robôs de triagem (ATS).",
-    link: "/capacita-pgm/gerador"
+    link: "/gerador"
   }
 ];
 
