@@ -10,7 +10,7 @@ export const GeradorClientPage = () => {
   const [data, setData] = useState<CurriculoATS>({
     dadosPessoais: { nome: '', email: '', telefone: '', linkedin: '', cidadeEstado: '' },
     resumo: '',
-    experiencias: [{ cargo: '', empresa: '', dataInicio: '', dataFim: '', descricao: [''] }],
+    experiencias: [{ cargo: '', empresa: '', dataInicio: '', dataFim: '', atual: false, descricao: [''] }],
     formacoes: [{ curso: '', instituicao: '', anoConclusao: '' }],
     habilidades: [''],
   });
