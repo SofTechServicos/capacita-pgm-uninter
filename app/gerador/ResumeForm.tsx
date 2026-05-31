@@ -364,7 +364,7 @@ const ResumeForm: React.FC<Props> = ({ onDataChange }) => {
                       className="border border-gray-300 rounded p-2 w-full text-sm focus:ring-2 focus:ring-[#2563eb] focus:outline-none"
                       value={exp.dataFim || ''}
                       onChange={e => updateExperience(idx, 'dataFim', e.target.value)}
-                      disabled={!!(exp as any).atual}
+                      disabled={!!exp.atual}
                     />
                   ) : (
                     <div className="flex gap-2">
@@ -376,7 +376,7 @@ const ResumeForm: React.FC<Props> = ({ onDataChange }) => {
                           const month = e.target.value.padStart(2, '0');
                           updateExperience(idx, 'dataFim', `${year}-${month}`);
                         }}
-                        disabled={!!(exp as any).atual}
+                        disabled={!!exp.atual}
                       >
                         <option value="">Mês</option>
                         {[...Array(12)].map((_, m) => {
@@ -396,7 +396,7 @@ const ResumeForm: React.FC<Props> = ({ onDataChange }) => {
                           const month = exp.dataFim ? exp.dataFim.split('-')[1] || '01' : '01';
                           updateExperience(idx, 'dataFim', `${year}-${month}`);
                         }}
-                        disabled={!!(exp as any).atual}
+                        disabled={!!exp.atual}
                       />
                     </div>
                   )}
@@ -404,7 +404,7 @@ const ResumeForm: React.FC<Props> = ({ onDataChange }) => {
                 <label className="flex items-center gap-2 text-sm">
                   <input
                     type="checkbox"
-                    checked={!!(exp as any).atual}
+                    checked={!!exp.atual}
                     onChange={e => {
                       const list = [...experiencias];
                       list[idx].atual = e.target.checked;
