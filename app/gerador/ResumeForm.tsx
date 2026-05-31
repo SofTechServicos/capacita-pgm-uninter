@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
-import { CurriculoATS, DadosPessoais, Experiencia, Formacao } from '../../types/ats';
+import { CurriculoATS, DadosPessoais, Experiencia, Formacao } from '../../ats';
 import ATSResumeDocument from './ATSResumeDocument';
 import ErrorBoundary from './ErrorBoundary';
 import { Download, Plus, Trash2, Book, AlertTriangle } from 'lucide-react';

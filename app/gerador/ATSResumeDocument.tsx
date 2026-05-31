@@ -1,6 +1,6 @@
 import React from 'react';
 import { Document, Page, Text, View, StyleSheet, Font } from '@react-pdf/renderer';
-import { CurriculoATS } from '../../types/ats';
+import { CurriculoATS } from '../../ats';
 
 // Helvetica is default for @react-pdf/renderer, no need to register
 
