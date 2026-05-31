@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
   name: {
     fontSize: 24, // Maior destaque para o nome
     fontFamily: 'Helvetica-Bold',
-    marginBottom: 6,
+    marginBottom: 14, // Espaçamento aumentado entre o nome e os contatos
     textTransform: 'uppercase',
     letterSpacing: 1.5,
     color: '#000000',
