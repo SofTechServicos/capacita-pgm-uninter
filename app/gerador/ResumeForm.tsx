@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
 import { CurriculoATS, DadosPessoais, Experiencia, Formacao } from '../../../types/ats';
-import { CapacitaPGMAnalytics } from '../../../lib/analytics';
 import ATSResumeDocument from './ATSResumeDocument';
 import ErrorBoundary from './ErrorBoundary';
 import { Download, Plus, Trash2, Book, AlertTriangle } from 'lucide-react';
@@ -595,7 +594,6 @@ const ResumeForm: React.FC<Props> = ({ onDataChange }) => {
               fileName={getFileName()}
               style={{ textDecoration: 'none' }}
               onClick={() => {
-                CapacitaPGMAnalytics.getInstance().trackToolDownload('Gerador Curriculo ATS');
                 toast.success('Sucesso! Seu currículo ATS está pronto.', {
                   duration: 3000,
                   position: 'bottom-center',
