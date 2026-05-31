@@ -4,7 +4,7 @@ import Link from 'next/link';
 import React, { useState } from 'react';
 import ResumeForm from './ResumeForm';
 import ResumePreview from './ResumePreview';
-import { CurriculoATS } from '../../types/ats';
+import { CurriculoATS } from '../../ats';
 
 export const GeradorClientPage = () => {
   const [data, setData] = useState<CurriculoATS>({
