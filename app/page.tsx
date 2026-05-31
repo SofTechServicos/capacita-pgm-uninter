@@ -167,11 +167,11 @@ export default function CapacitaPGMPage() {
 
   // Função disparadora para registrar o clique em cursos
   const trackCourseClick = (courseName: string) => {
-    fetch('/api/capacita-pgm/analytics', {
+    fetch('/api/capacita-pgm/interacoes', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        event: 'course_click',
+        tipo: 'clique_curso',
         course_name: courseName,
         label: courseName
       })
@@ -180,11 +180,11 @@ export default function CapacitaPGMPage() {
 
   // Função disparadora para registrar o acesso aos guias e modelos
   const trackToolDownload = (toolName: string) => {
-    fetch('/api/capacita-pgm/analytics', {
+    fetch('/api/capacita-pgm/interacoes', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        event: 'tool_download',
+        tipo: 'download_ferramenta',
         tool_name: toolName,
         label: toolName
       })
