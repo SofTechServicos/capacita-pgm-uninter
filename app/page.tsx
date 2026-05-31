@@ -165,6 +165,32 @@ export default function CapacitaPGMPage() {
   const [cursosGoverno, setCursosGoverno] = useState<CursoGoverno[]>([]);
   const [loadingGoverno, setLoadingGoverno] = useState(true);
 
+  // Função disparadora para registrar o clique em cursos
+  const trackCourseClick = (courseName: string) => {
+    fetch('/api/capacita-pgm/analytics', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        event: 'course_click',
+        course_name: courseName,
+        label: courseName
+      })
+    }).catch(err => console.error('Erro no tracking:', err));
+  };
+
+  // Função disparadora para registrar o acesso aos guias e modelos
+  const trackToolDownload = (toolName: string) => {
+    fetch('/api/capacita-pgm/analytics', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        event: 'tool_download',
+        tool_name: toolName,
+        label: toolName
+      })
+    }).catch(err => console.error('Erro no tracking:', err));
+  };
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -444,6 +470,7 @@ export default function CapacitaPGMPage() {
                     href={curso.link}
                     target="_blank"
                     rel="noopener noreferrer"
+                  onClick={() => trackCourseClick(curso.titulo)}
                     className="inline-block mt-auto bg-softech-blue text-white px-4 py-2 rounded-lg hover:brightness-110 transition-all duration-300 text-sm font-medium"
                   >
                     Acessar Curso Gratuito
@@ -493,6 +520,7 @@ export default function CapacitaPGMPage() {
                     href={curso.link}
                     target="_blank"
                     rel="noopener noreferrer"
+                  onClick={() => trackCourseClick(curso.titulo)}
                     className="inline-block mt-auto bg-purple-600 text-white px-4 py-2 rounded-lg hover:brightness-110 transition-all duration-300 text-sm font-medium"
                   >
                     Acessar Curso Gratuito
@@ -556,6 +584,7 @@ export default function CapacitaPGMPage() {
                         href={curso.link}
                         target="_blank"
                         rel="noopener noreferrer"
+                        onClick={() => trackCourseClick(curso.titulo)}
                         className="inline-block mt-auto bg-green-600 text-white px-4 py-2 rounded-lg hover:brightness-110 transition-all duration-300 text-sm font-medium"
                       >
                         Acessar Curso Gratuito
@@ -624,6 +653,7 @@ export default function CapacitaPGMPage() {
                   target={item.tipo === 'modelo' ? '_self' : '_blank'}
                   rel={item.tipo === 'modelo' ? '' : 'noopener noreferrer'}
                   download={item.tipo === 'modelo' ? true : undefined}
+                onClick={() => trackToolDownload(item.titulo)}
                   className={`inline-block mt-auto text-white px-4 py-2 rounded-lg hover:brightness-110 transition-all duration-300 text-sm font-medium ${
                     item.tipo === 'guia'
                       ? 'bg-softech-blue'
