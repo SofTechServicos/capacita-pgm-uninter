@@ -2,39 +2,86 @@ import React from 'react';
 import { Document, Page, Text, View, StyleSheet, Font } from '@react-pdf/renderer';
 import { CurriculoATS } from '../../ats';
 
-// Helvetica is default for @react-pdf/renderer, no need to register
-
 const styles = StyleSheet.create({
   page: {
-    padding: 36,
-    fontSize: 10,
-    lineHeight: 1.3,
+    padding: 40,
+    fontFamily: 'Helvetica',
+    fontSize: 11,
+    lineHeight: 1.4,
+    color: '#000000',
   },
   header: {
-    marginBottom: 20,
+    marginBottom: 15,
+    textAlign: 'center',
   },
   name: {
-    fontSize: 20,
-    fontWeight: 'bold',
+    fontSize: 22,
+    fontFamily: 'Helvetica-Bold',
+    marginBottom: 4,
+    textTransform: 'uppercase',
+    letterSpacing: 1,
+  },
+  contactContainer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    flexWrap: 'wrap',
   },
   contact: {
     fontSize: 10,
-    marginTop: 4,
+    color: '#333333',
+  },
+  section: {
+    marginBottom: 12,
   },
   sectionTitle: {
     fontSize: 12,
-    fontWeight: 'bold',
-    marginTop: 12,
-    marginBottom: 4,
-    textDecoration: 'underline',
+    fontFamily: 'Helvetica-Bold',
+    textTransform: 'uppercase',
+    borderBottomWidth: 1,
+    borderBottomColor: '#000000',
+    paddingBottom: 2,
+    marginBottom: 8,
+  },
+  itemContainer: {
+    marginBottom: 8,
+  },
+  itemHeader: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'baseline',
+    marginBottom: 2,
+  },
+  itemTitle: {
+    fontFamily: 'Helvetica-Bold',
+    fontSize: 11,
+  },
+  itemSubtitle: {
+    fontFamily: 'Helvetica-Oblique',
+    fontSize: 11,
+  },
+  itemDate: {
+    fontSize: 10,
+    color: '#333333',
   },
   text: {
-    marginBottom: 2,
+    fontSize: 11,
+    marginBottom: 3,
+    textAlign: 'justify',
   },
-  listItem: {
-    marginLeft: 10,
-    marginBottom: 2,
-    fontSize: 10,
+  bulletPoint: {
+    flexDirection: 'row',
+    marginBottom: 3,
+    paddingLeft: 4,
+    paddingRight: 8,
+  },
+  bullet: {
+    width: 10,
+    fontSize: 11,
+  },
+  bulletText: {
+    flex: 1,
+    fontSize: 11,
+    textAlign: 'justify',
   },
 });
 
@@ -48,66 +95,97 @@ const ATSResumeDocument: React.FC<Props> = ({ data }) => {
   const formatMonth = (m?: string) => {
     if (!m) return '';
     try {
-      const d = new Date(m + '-01');
-      return new Intl.DateTimeFormat('pt-BR', { month: 'short', year: 'numeric' }).format(d);
+      const [year, month] = m.split('-');
+      if (!year || !month) return m;
+      const date = new Date(parseInt(year), parseInt(month) - 1);
+      const formatted = new Intl.DateTimeFormat('pt-BR', { month: 'short', year: 'numeric' }).format(date);
+      return formatted.charAt(0).toUpperCase() + formatted.slice(1);
     } catch (e) {
       return m;
     }
   };
 
+  const contacts = [
+    dadosPessoais.email,
+    dadosPessoais.telefone,
+    dadosPessoais.linkedin,
+    dadosPessoais.cidadeEstado
+  ].filter(Boolean);
+
   return (
     <Document>
       <Page size="A4" style={styles.page}>
-        {/* header with name and contacts */}
         <View style={styles.header}>
           <Text style={styles.name}>{dadosPessoais.nome}</Text>
-          <Text style={styles.contact}>{dadosPessoais.email}</Text>
-          {dadosPessoais.telefone && <Text style={styles.contact}>{dadosPessoais.telefone}</Text>}
-          {dadosPessoais.linkedin && <Text style={styles.contact}>{dadosPessoais.linkedin}</Text>}
-          {dadosPessoais.cidadeEstado && <Text style={styles.contact}>{dadosPessoais.cidadeEstado}</Text>}
+          <View style={styles.contactContainer}>
+            {contacts.map((c, i) => (
+              <Text key={i} style={styles.contact}>
+                {c}{i < contacts.length - 1 ? '  |  ' : ''}
+              </Text>
+            ))}
+          </View>
         </View>
 
         {resumo && (
-          <View>
-            <Text style={styles.sectionTitle}>Resumo</Text>
+          <View style={styles.section}>
+            <Text style={styles.sectionTitle}>Resumo Profissional</Text>
             <Text style={styles.text}>{resumo}</Text>
           </View>
         )}
 
-        {experiencias.length > 0 && (
-          <View>
+        {experiencias && experiencias.length > 0 && experiencias.some(e => e.cargo || e.empresa) && (
+          <View style={styles.section}>
             <Text style={styles.sectionTitle}>Experiência Profissional</Text>
-            {experiencias.map((exp, idx) => (
-              <View key={idx} style={{ marginBottom: 4 }}>
-                <Text style={styles.text}>
-                  <Text style={{ fontWeight: 'bold' }}>{exp.cargo}</Text> - {exp.empresa}
-                </Text>
-                <Text style={styles.text}>
-                  {exp.dataInicio && `${formatMonth(exp.dataInicio)}${(exp as any).atual ? ' – Atual' : exp.dataFim ? ` – ${formatMonth(exp.dataFim)}` : ''}`}
-                </Text>
-                {exp.descricao.map((item, i) => (
-                  <Text key={i} style={styles.listItem}>• {item}</Text>
-                ))}
-              </View>
-            ))}
+            {experiencias.map((exp, idx) => {
+              if (!exp.cargo && !exp.empresa) return null;
+              const dateStr = exp.dataInicio 
+                ? `${formatMonth(exp.dataInicio)}${exp.atual ? ' – Atual' : exp.dataFim ? ` – ${formatMonth(exp.dataFim)}` : ''}`
+                : '';
+              return (
+                <View key={idx} style={styles.itemContainer}>
+                  <View style={styles.itemHeader}>
+                    <View style={{ flex: 1 }}>
+                      <Text style={styles.itemTitle}>{exp.cargo}</Text>
+                      <Text style={styles.itemSubtitle}>{exp.empresa}</Text>
+                    </View>
+                    <Text style={styles.itemDate}>{dateStr}</Text>
+                  </View>
+                  {exp.descricao && exp.descricao.map((item, i) => item.trim() ? (
+                    <View key={i} style={styles.bulletPoint}>
+                      <Text style={styles.bullet}>•</Text>
+                      <Text style={styles.bulletText}>{item}</Text>
+                    </View>
+                  ) : null)}
+                </View>
+              );
+            })}
           </View>
         )}
 
-        {formacoes.length > 0 && (
-          <View>
-            <Text style={styles.sectionTitle}>Formação</Text>
-            {formacoes.map((f, idx) => (
-              <Text key={idx} style={styles.text}>
-                {f.curso} – {f.instituicao} ({f.anoConclusao})
-              </Text>
-            ))}
+        {formacoes && formacoes.length > 0 && formacoes.some(f => f.curso || f.instituicao) && (
+          <View style={styles.section}>
+            <Text style={styles.sectionTitle}>Formação Acadêmica</Text>
+            {formacoes.map((f, idx) => {
+              if (!f.curso && !f.instituicao) return null;
+              return (
+                <View key={idx} style={styles.itemContainer}>
+                  <View style={styles.itemHeader}>
+                    <View style={{ flex: 1 }}>
+                      <Text style={styles.itemTitle}>{f.curso}</Text>
+                      <Text style={styles.itemSubtitle}>{f.instituicao}</Text>
+                    </View>
+                    <Text style={styles.itemDate}>{f.anoConclusao}</Text>
+                  </View>
+                </View>
+              );
+            })}
           </View>
         )}
 
-        {habilidades.length > 0 && (
-          <View>
-            <Text style={styles.sectionTitle}>Habilidades</Text>
-            <Text style={styles.text}>{habilidades.join(', ')}</Text>
+        {habilidades && habilidades.length > 0 && habilidades.some(h => h.trim()) && (
+          <View style={styles.section}>
+            <Text style={styles.sectionTitle}>Habilidades e Competências</Text>
+            <Text style={styles.text}>{habilidades.filter(h => h.trim()).join(' • ')}</Text>
           </View>
         )}
       </Page>
