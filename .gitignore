@@ -1,1 +1,5 @@
 node_modules
+client_secret_2_*.json
+.next
+.env*.local
+*.log

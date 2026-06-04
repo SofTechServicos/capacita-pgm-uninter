@@ -2,6 +2,8 @@
 
 import { useState } from 'react';
 import { FiStar, FiMessageCircle, FiX, FiSend } from 'react-icons/fi';
+import { db } from '../lib/firebase';
+import { collection, addDoc } from 'firebase/firestore';
 
 interface FeedbackData {
   rating: number;
@@ -25,7 +27,7 @@ export default function FeedbackWidget() {
     'Sugestão de Melhoria'
   ];
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
     if (rating === 0 || !category || !comment.trim()) {
@@ -33,20 +35,37 @@ export default function FeedbackWidget() {
       return;
     }
 
-    const feedback: FeedbackData = {
+    const feedback = {
       rating,
       category,
       comment: comment.trim(),
-      timestamp: Date.now()
+      timestamp: Date.now(),
+      createdAt: new Date().toISOString()
     };
 
-    // Salvar feedback no localStorage
-    const stored = localStorage.getItem('capacita_pgm_feedback') || '[]';
-    const feedbacks = JSON.parse(stored);
-    feedbacks.push(feedback);
-    localStorage.setItem('capacita_pgm_feedback', JSON.stringify(feedbacks));
+    try {
+      // Salvar feedback no Firebase
+      await addDoc(collection(db, 'feedbacks'), feedback);
 
-    setSubmitted(true);
+      // Salvar feedback no localStorage para histórico local
+      const stored = localStorage.getItem('capacita_pgm_feedback') || '[]';
+      const feedbacks = JSON.parse(stored);
+      feedbacks.push(feedback);
+      localStorage.setItem('capacita_pgm_feedback', JSON.stringify(feedbacks));
+
+      setSubmitted(true);
+    } catch (fbError) {
+      console.error('Erro ao salvar feedback no Firebase:', fbError);
+      
+      // Fallback: Salvar no localStorage de qualquer forma
+      const stored = localStorage.getItem('capacita_pgm_feedback') || '[]';
+      const feedbacks = JSON.parse(stored);
+      feedbacks.push(feedback);
+      localStorage.setItem('capacita_pgm_feedback', JSON.stringify(feedbacks));
+      
+      setSubmitted(true);
+    }
+
     setTimeout(() => {
       setIsOpen(false);
       setSubmitted(false);
