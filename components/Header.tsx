@@ -17,7 +17,7 @@ export default function Header() {
   const pages = [
     { id: 'home', name: 'Início', path: '/' },
     { id: 'gerador', name: 'Gerador de Currículos', path: '/gerador' },
-    { id: 'guias', name: 'Guias Práticos', path: '/guias' }
+    { id: 'guias', name: 'Guias Práticos', path: '/#kit-ferramentas' }
   ]
 
   return (
