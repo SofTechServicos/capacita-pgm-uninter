@@ -2,8 +2,6 @@
 
 import { useState } from 'react';
 import { FiStar, FiMessageCircle, FiX, FiSend } from 'react-icons/fi';
-import { db } from '../lib/firebase';
-import { collection, addDoc } from 'firebase/firestore';
 
 interface FeedbackData {
   rating: number;
@@ -44,8 +42,12 @@ export default function FeedbackWidget() {
     };
 
     try {
-      // Salvar feedback no Firebase
-      await addDoc(collection(db, 'feedbacks'), feedback);
+      // Enviar feedback para a API de backend na Softech (que usa Admin SDK)
+      await fetch('https://softechservicos.vercel.app/api/capacita-pgm/feedback', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(feedback)
+      });
 
       // Salvar feedback no localStorage para histórico local
       const stored = localStorage.getItem('capacita_pgm_feedback') || '[]';
@@ -55,7 +57,7 @@ export default function FeedbackWidget() {
 
       setSubmitted(true);
     } catch (fbError) {
-      console.error('Erro ao salvar feedback no Firebase:', fbError);
+      console.error('Erro ao salvar feedback na API:', fbError);
       
       // Fallback: Salvar no localStorage de qualquer forma
       const stored = localStorage.getItem('capacita_pgm_feedback') || '[]';
