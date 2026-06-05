@@ -26,26 +26,34 @@ Através da criação de um portal web moderno, integrado a um painel analítico
 - **Total de Interações na Plataforma:** [ INSERIR DADO ]
 - **Avaliação Média de Satisfação (CSAT):** [ INSERIR DADO ] / 5.0
 
-4. DETALHAMENTO DO IMPACTO
+4. DETALHAMENTO DO IMPACTO (RANKINGS GERAIS)
 ---------------------------------------------------------
 Abaixo estão os resultados detalhados do consumo de conteúdo gerado pela comunidade:
 
-**A. TOP 3 CURSOS EXTERNOS ACESSADOS (EVG / FGV)**
-1. [ NOME DO CURSO ] - [ QTD ] acessos
-2. [ NOME DO CURSO ] - [ QTD ] acessos
-3. [ NOME DO CURSO ] - [ QTD ] acessos
+**A. FERRAMENTAS E MODELOS MAIS USADOS**
+1. [ NOME DA FERRAMENTA ] - [ QTD ] usos
+2. [ NOME DA FERRAMENTA ] - [ QTD ] usos
 
-**B. TOP GUIAS MAIS VISITADOS**
+**B. CURSOS MAIS ACESSADOS (ESCOLA VIRTUAL GOV / FGV)**
+1. [ NOME DO CURSO ] - [ QTD ] cliques
+2. [ NOME DO CURSO ] - [ QTD ] cliques
+
+**C. GUIAS INTERATIVAS MAIS VISITADAS**
 1. [ NOME DO GUIA ] - [ QTD ] visitas
 2. [ NOME DO GUIA ] - [ QTD ] visitas
-3. [ NOME DO GUIA ] - [ QTD ] visitas
 
-**C. CONSUMO DE MÍDIA INTERNA (Acessibilidade e Retenção)**
-- **Áudios (Resumos Otimizados) Ouvidos:** [ QTD TOTAL ] plays
-- **Vídeos Tutoriais Assistidos:** [ QTD TOTAL ] plays
-- **Downloads de Infográficos/Ferramentas:** [ QTD TOTAL ] downloads
+**D. CONSUMO PROFUNDO DE MÍDIA**
+- **Áudios de Resumo Ouvidos:** [ QTD TOTAL ] plays (Ex: "Áudio X")
+- **Vídeos Assistidos:** [ QTD TOTAL ] interações (Ex: "Vídeo Y")
+- **Infográficos Baixados:** [ QTD TOTAL ] downloads
+- **Links Externos Clicados (Gov.br, Sebrae, etc):** [ QTD TOTAL ] cliques
 
-5. IMPACTO SOCIAL OBSERVADO E CONCLUSÃO
+5. AVALIAÇÃO DA COMUNIDADE (CSAT)
+---------------------------------------------------------
+- Total de Feedbacks Recebidos: [ QTD ] avaliações
+- Nota Média (Customer Satisfaction Score): [ X.X ] / 5.0
+
+6. IMPACTO SOCIAL OBSERVADO E CONCLUSÃO
 ---------------------------------------------------------
 A implementação do portal demonstrou a viabilidade de aplicar soluções tecnológicas acessíveis (com design adaptado para dispositivos móveis e consumo sem login) para resolver problemas de qualificação profissional. 
 
