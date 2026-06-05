@@ -1,9 +1,11 @@
 import Link from 'next/link'
 import { FaArrowLeft, FaCheckCircle, FaSearch, FaEdit, FaRocket, FaBullseye, FaChartLine } from 'react-icons/fa'
+import GuiaTracker from '../../../components/GuiaTracker'
 
 export default function GuiaCurriculoPage() {
   return (
     <div className="bg-deep-dark text-slate-300 bg-grid-pattern bg-grid-size relative overflow-hidden">
+      <GuiaTracker guideName="Currículo de Impacto" />
       {/* Efeitos de Luz no Fundo */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden z-0 pointer-events-none">
         <div className="absolute top-[-10%] right-[10%] w-[50vw] h-[50vw] bg-green-600/20 blur-[120px] rounded-full opacity-50 mix-blend-screen animate-pulse"></div>

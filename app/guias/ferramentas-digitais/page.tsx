@@ -1,9 +1,11 @@
 import Link from 'next/link'
 import { FaArrowLeft, FaRocket, FaShieldAlt, FaChartLine, FaCog, FaUsers, FaCloud, FaLock } from 'react-icons/fa'
+import GuiaTracker from '../../../components/GuiaTracker'
 
 export default function GuiaFerramentasDigitaisPage() {
   return (
     <div className="bg-deep-dark text-slate-300 bg-grid-pattern bg-grid-size relative overflow-hidden">
+      <GuiaTracker guideName="Ferramentas Digitais 2025" />
       {/* Efeitos de Luz no Fundo */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden z-0 pointer-events-none">
         <div className="absolute top-[-10%] left-[-10%] w-[50vw] h-[50vw] bg-softech-blue/20 blur-[120px] rounded-full opacity-50 mix-blend-screen animate-pulse"></div>

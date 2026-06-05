@@ -1,10 +1,12 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { FaArrowLeft, FaCheckCircle, FaCalendarAlt, FaMoneyBillWave, FaUsers, FaFileAlt } from 'react-icons/fa'
+import GuiaTracker from '../../../components/GuiaTracker'
 
 export default function GuiaMEIPage() {
   return (
     <div className="bg-deep-dark text-slate-300 bg-grid-pattern bg-grid-size relative overflow-hidden">
+      <GuiaTracker guideName="MEI e Formalização" />
       {/* Efeitos de Luz no Fundo */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden z-0 pointer-events-none">
         <div className="absolute top-[-10%] left-[20%] w-[50vw] h-[50vw] bg-softech-blue/20 blur-[120px] rounded-full opacity-50 mix-blend-screen animate-pulse"></div>
