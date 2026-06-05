@@ -425,21 +425,21 @@ export default function CapacitaPGMPage() {
                   categoria: "Pacote Office"
                 },
                 {
-                  titulo: "Comunicação Escrita e Oral",
-                  descricao: "Aprimore suas competências de fala e escrita para se comunicar de forma correta e apropriada em diferentes contextos.",
-                  link: "https://www.ev.org.br/trilhas-de-conhecimento/comunicacao-escrita-e-oral",
+                  titulo: "Comunicação Escrita: Ortografia, Gramática e Texto",
+                  descricao: "Aprimore sua comunicação escrita estudando as regras essenciais de ortografia, gramática e construção de textos.",
+                  link: "https://www.ev.org.br/cursos/comunicacao_escrita",
                   categoria: "Desenvolvimento Pessoal"
                 },
                 {
-                  titulo: "Finanças",
-                  descricao: "Compreenda os principais fundamentos financeiros, da matemática financeira à contabilidade e análise de balanços.",
-                  link: "https://www.ev.org.br/trilhas-de-conhecimento/financas",
+                  titulo: "Construindo minha Proteção Financeira",
+                  descricao: "Aprenda a administrar suas finanças por meio de planejamento e organização, mapeando gastos para um futuro melhor.",
+                  link: "http://ev.org.br/cursos/Construindo-minha-Protecao-Financeira",
                   categoria: "Gestão"
                 },
                 {
-                  titulo: "Fundamentos do Power BI",
-                  descricao: "Aprenda a transformar dados brutos em informações coerentes e visualmente interativas com o Microsoft Power BI.",
-                  link: "https://www.ev.org.br/trilhas-de-conhecimento/fundamentos-do-power-bi",
+                  titulo: "Introdução à Análise de Dados - Microsoft Power BI",
+                  descricao: "Conheça o Power BI e aprenda como transformar fontes de dados em relatórios imersivos para tomada de decisões.",
+                  link: "https://www.ev.org.br/cursos/introducao-a-analise-de-dados-microsoft-power-bi",
                   categoria: "Tecnologia"
                 },
                 {
@@ -449,10 +449,10 @@ export default function CapacitaPGMPage() {
                   categoria: "Desenvolvimento Pessoal"
                 },
                 {
-                  titulo: "Transformação Digital e Inovação",
-                  descricao: "Entenda como a tecnologia, o empreendedorismo e a inovação caminham juntos e aprenda sobre IA, LGPD e processos de inovação.",
-                  link: "https://www.ev.org.br/trilhas-de-conhecimento/transformacao-digital-e-inovacao",
-                  categoria: "Tecnologia"
+                  titulo: "Empreendedorismo e Inovação",
+                  descricao: "Aprenda conceitos importantes sobre a postura empreendedora, identificação de oportunidades e criação de Planos de Negócios.",
+                  link: "https://www.ev.org.br/cursos/empreendedorismo-e-inovacao",
+                  categoria: "Empreendedorismo"
                 }
               ].map((curso, index) => (
                 <motion.div 
