@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { useState, useEffect } from 'react'
 import { FiBookOpen, FiUsers, FiTrendingUp, FiAward, FiClock, FiTag } from 'react-icons/fi'
+import GuiaTracker from '../components/GuiaTracker'
 
 interface CursoGoverno {
   id: string;
@@ -191,20 +192,6 @@ export default function CapacitaPGMPage() {
     }).catch(err => console.error('Erro no tracking:', err));
   };
 
-  // Função disparadora para registrar cliques nos vídeos
-  const trackVideoInteract = (videoTitle: string, videoId: string) => {
-    fetch('https://softechservicos.vercel.app/api/capacita-pgm/analytics', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        event: 'video_interact',
-        guide_name: 'Página Principal',
-        video_title: videoTitle,
-        video_id: videoId
-      })
-    }).catch(err => console.error('Erro no tracking:', err));
-  };
-
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -247,6 +234,7 @@ export default function CapacitaPGMPage() {
 
   return (
     <div className="min-h-screen bg-deep-dark text-slate-300 bg-grid-pattern bg-grid-size">
+      <GuiaTracker guideName="Página Principal" />
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-blue-600 via-purple-600 to-indigo-700 text-white py-24 relative overflow-hidden">
         <div className="absolute inset-0 bg-black/10"></div>
@@ -705,10 +693,7 @@ export default function CapacitaPGMPage() {
                     Currículo que Chama Atenção dos Recrutadores
                   </h4>
                   <div className="mb-4 rounded-lg overflow-hidden border border-slate-700">
-                    <div
-                        className="relative w-full h-0 pb-[56.25%] rounded-lg overflow-hidden"
-                        onClick={() => trackVideoInteract('Dicas de Currículo para Conseguir Emprego', 'jSiesGzgggQ')}
-                      >
+                    <div className="relative w-full h-0 pb-[56.25%] rounded-lg overflow-hidden">
                        <iframe
                          className="absolute top-0 left-0 w-full h-full"
                          src="https://www.youtube.com/embed/jSiesGzgggQ"
@@ -731,10 +716,7 @@ export default function CapacitaPGMPage() {
                     Entrevista de Emprego em Paragominas: Dicas para se Destacar
                   </h4>
                   <div className="mb-4 rounded-lg overflow-hidden border border-slate-700">
-                    <div
-                        className="relative w-full h-0 pb-[56.25%] rounded-lg overflow-hidden"
-                        onClick={() => trackVideoInteract('Entrevista de Emprego em Paragominas', 'b6E0ZF6oApk')}
-                      >
+                    <div className="relative w-full h-0 pb-[56.25%] rounded-lg overflow-hidden">
                        <iframe
                          className="absolute top-0 left-0 w-full h-full"
                          src="https://www.youtube.com/embed/b6E0ZF6oApk"
@@ -794,10 +776,7 @@ export default function CapacitaPGMPage() {
                     Como Cadastrar no GOV.BR para Abrir o MEI
                   </h4>
                   <div className="mb-4">
-                    <div
-                        className="relative w-full h-0 pb-[56.25%] rounded-lg overflow-hidden"
-                        onClick={() => trackVideoInteract('Como Abrir MEI - Passo a Passo (Sebrae)', 'y7OVwLCd0ag')}
-                      >
+                    <div className="relative w-full h-0 pb-[56.25%] rounded-lg overflow-hidden">
                        <iframe
                          className="absolute top-0 left-0 w-full h-full"
                          src="https://www.youtube.com/embed/y7OVwLCd0ag"

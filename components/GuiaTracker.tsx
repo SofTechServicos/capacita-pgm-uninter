@@ -52,37 +52,49 @@ export default function GuiaTracker({ guideName }: GuiaTrackerProps) {
     });
 
     // ── 3. Video wrapper click (YouTube iframe cross-origin workaround) ─────
-    // Detect click on the wrapper div above the iframe
+    // Detect click on iframe using window blur + hover state
     const iframeWrappers = document.querySelectorAll<HTMLElement>(
       'div.aspect-video, div[class*="pb-\\[56"], div[class*="relative"][class*="h-0"]'
     );
-    const videoHandlers: Array<{ el: HTMLElement; fn: () => void }> = [];
+    const hoverState = new Map<HTMLElement, boolean>();
+    const wrapperHandlers: Array<{ el: HTMLElement; event: string; fn: () => void }> = [];
 
     iframeWrappers.forEach((wrapper) => {
-      const iframe = wrapper.querySelector('iframe');
-      if (!iframe) return;
-
-      const src = iframe.getAttribute('src') || '';
-      const title = iframe.getAttribute('title') || guideName;
-      // Extract YouTube video ID
-      const videoIdMatch = src.match(/embed\/([a-zA-Z0-9_-]+)/);
-      const videoId = videoIdMatch ? videoIdMatch[1] : src;
-
-      let clicked = false;
-      const onClick = () => {
-        if (clicked) return;
-        clicked = true;
-        track({
-          event: 'video_interact',
-          guide_name: guideName,
-          video_title: title,
-          video_id: videoId,
-        });
-      };
-
-      wrapper.addEventListener('click', onClick);
-      videoHandlers.push({ el: wrapper, fn: onClick });
+      const onEnter = () => hoverState.set(wrapper, true);
+      const onLeave = () => hoverState.set(wrapper, false);
+      wrapper.addEventListener('mouseenter', onEnter);
+      wrapper.addEventListener('mouseleave', onLeave);
+      wrapperHandlers.push({ el: wrapper, event: 'mouseenter', fn: onEnter });
+      wrapperHandlers.push({ el: wrapper, event: 'mouseleave', fn: onLeave });
     });
+
+    const clickedVideos = new Set<string>();
+
+    const onWindowBlur = () => {
+      iframeWrappers.forEach((wrapper) => {
+        if (hoverState.get(wrapper)) {
+          const iframe = wrapper.querySelector('iframe');
+          if (!iframe) return;
+
+          const src = iframe.getAttribute('src') || '';
+          const title = iframe.getAttribute('title') || guideName;
+          const videoIdMatch = src.match(/embed\/([a-zA-Z0-9_-]+)/);
+          const videoId = videoIdMatch ? videoIdMatch[1] : src;
+
+          if (clickedVideos.has(videoId)) return;
+          clickedVideos.add(videoId);
+
+          track({
+            event: 'video_interact',
+            guide_name: guideName,
+            video_title: title,
+            video_id: videoId,
+          });
+        }
+      });
+    };
+
+    window.addEventListener('blur', onWindowBlur);
 
     // ── 4. Infographic download ─────────────────────────────────────────────
     const downloadLinks = document.querySelectorAll<HTMLAnchorElement>('a[download]');
@@ -129,7 +141,8 @@ export default function GuiaTracker({ guideName }: GuiaTrackerProps) {
     // ── Cleanup ─────────────────────────────────────────────────────────────
     return () => {
       audioHandlers.forEach(({ el, fn }) => el.removeEventListener('play', fn));
-      videoHandlers.forEach(({ el, fn }) => el.removeEventListener('click', fn));
+      wrapperHandlers.forEach(({ el, event, fn }) => el.removeEventListener(event, fn));
+      window.removeEventListener('blur', onWindowBlur);
       downloadHandlers.forEach(({ el, fn }) => el.removeEventListener('click', fn));
       linkHandlers.forEach(({ el, fn }) => el.removeEventListener('click', fn));
     };
