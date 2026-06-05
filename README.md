@@ -1,65 +1,72 @@
-# 🎓 Capacita PGM - Projeto Extensionista (UNINTER)
+# 🚀 Capacita PGM — Hub de Oportunidades
 
-> **Nota Acadêmica:** Este repositório contém o código-fonte referente ao módulo **Capacita PGM**, extraído do ecossistema comercial da *SofTech Serviços e Tecnologia*. Este isolamento foi realizado exclusivamente para fins de avaliação da **Atividade Extensionista II** do curso de Gestão da Tecnologia da Informação (UNINTER).
+![Capacita PGM Cover](https://via.placeholder.com/1200x400/1e293b/10b981?text=Capacita+PGM+Hub+de+Oportunidades)
 
-🔗 **Acesso à Aplicação em Produção:** [https://softechservicos.vercel.app/capacita-pgm](https://softechservicos.vercel.app/capacita-pgm)
-
----
-
-## 🎯 Visão Geral do Projeto
-O **Capacita PGM** é um hub tecnológico de capacitação focado no desenvolvimento profissional da comunidade de Paragominas - PA. A plataforma atua em três frentes principais:
-1. **Educação Continuada:** Curadoria centralizada de cursos online gratuitos (Fundação Bradesco, Escola Virtual Gov e FGV).
-2. **Empregabilidade:** Automação na criação de documentos através de um **Gerador de Currículos ATS** gratuito e mobile-first.
-3. **Empreendedorismo:** Guias interativos para formalização de MEI e letramento digital.
-
-### 🌍 Alinhamento ODS (Objetivos de Desenvolvimento Sustentável - ONU)
-* 📚 **ODS 04:** Educação de Qualidade
-* 💼 **ODS 08:** Trabalho Decente e Crescimento Econômico
-* ⚖️ **ODS 10:** Redução das Desigualdades
-* 🏙️ **ODS 11:** Cidades e Comunidades Sustentáveis
+> Um ecossistema digital inteligente criado para democratizar o acesso à qualificação profissional, ferramentas de formalização (MEI) e oportunidades de carreira para a população de Paragominas e região.
 
 ---
 
-## 🚀 Tecnologias Utilizadas
+## 🎯 O que é o Capacita PGM?
 
-**Frontend & UI:**
-* [Next.js 14](https://nextjs.org/) (App Router)
-* [TypeScript](https://www.typescriptlang.org/) (Tipagem estática)
-* [Tailwind CSS](https://tailwindcss.com/) (Estilização responsiva)
+O **Capacita PGM** é o projeto principal da iniciativa de Atividade Extensionista da SofTech Serviços. Ele atua como um hub centralizador que conecta cidadãos a:
 
-**Core Funcional (PDF & Dados):**
-* `@react-pdf/renderer` (Geração de PDF avançada 100% Client-Side)
-* Parseamento de CSV e APIs dinâmicas para catálogo de cursos.
-
-**Infraestrutura & Analytics:**
-* Firebase / Firestore Analytics (Coleta de métricas e geolocalização)
-* Hospedagem Serverless Edge na Vercel
+1. **Cursos Gratuitos de Alta Qualidade:** Curadoria de cursos da Escola Virtual.Gov (EVG) e FGV.
+2. **Guias Interativos:** Conteúdo nativo sobre Currículo, MEI e Ferramentas Digitais, com resumos em áudio e vídeos.
+3. **Gerador ATS de Currículos:** Ferramenta integrada para criar currículos otimizados para robôs de recrutamento.
+4. **Inteligência Analítica (Tracking Profundo):** Sistema de monitoramento invisível (sem cookies intrusivos) que mede o impacto acadêmico e o engajamento da comunidade em tempo real.
 
 ---
 
-## ⚙️ Funcionalidades e Estrutura do Sistema
+## 🛠️ Stack Tecnológico
 
-A arquitetura do projeto foi desenvolvida utilizando as melhores práticas de Engenharia de Software, priorizando a experiência em dispositivos móveis (Mobile-First):
+Este repositório contém o **Frontend** do ecossistema.
 
-* 📄 **`/app/gerador`**: Módulo core de automação. Contém o `GeradorClientPage.tsx`, `ResumeForm.tsx` (interface em abas para mobile e split-view para PC) e `ATSResumeDocument.tsx` (motor de renderização do currículo).
-* 📊 **`/app/api/capacita-pgm`**: APIs customizadas (`route.ts`) para gestão de métricas e consumo dinâmico de catálogos governamentais.
-* 🧩 **`/components`**: Ampla biblioteca de componentes isolados, incluindo ferramentas de conversão, `FeedbackWidget.tsx` para notas dos usuários, e `GeoAnalytics.tsx` para métricas georreferenciadas do uso na região.
-* 📚 **`/app/guias`**: Sistema de navegação interativa com conteúdos ricos em áudio e texto (MEI, Ferramentas Digitais).
-
----
-
-## 📈 Impacto e Métricas (KPIs)
-Para validar a eficácia social da Atividade Extensionista, o sistema conta com rastreamento autônomo (via componentes como `ImpactMetrics.tsx` e `AcademicReport.tsx`). O sistema coleta de forma anônima:
-- Taxa de conversão do Gerador de Currículos.
-- Cliques de saída para os cursos da Fundação Bradesco e Gov.br.
-- Avaliação de usabilidade (CSAT) via widget.
+- **Framework:** [Next.js 14](https://nextjs.org/) (App Router)
+- **Linguagem:** TypeScript
+- **Estilização:** Tailwind CSS + Framer Motion (Glassmorphism & Dark Mode)
+- **Ícones:** React Icons
+- **Tracking/Backend:** Firebase Firestore (via [Softech-Sistema](https://github.com/SofTechServicos/Softech-Sistema))
 
 ---
 
-## 👨‍💻 Autor & Desenvolvedor
+## 🏗️ Como rodar o projeto localmente
 
-**Elio Alves Queiroz Junior**  
-*Graduando em Gestão da Tecnologia da Informação - UNINTER*  
-*RU: 930051*
+Siga os passos abaixo para rodar a interface na sua máquina:
 
-[LinkedIn](https://www.linkedin.com) | [GitHub](https://github.com/SofTechServicos)
+1. **Clone o repositório:**
+   ```bash
+   git clone https://github.com/SofTechServicos/capacita-pgm-uninter.git
+   ```
+
+2. **Entre no diretório e instale as dependências:**
+   ```bash
+   cd capacita-pgm-uninter
+   npm install
+   ```
+
+3. **Inicie o servidor de desenvolvimento:**
+   ```bash
+   npm run dev
+   ```
+
+4. Acesse `http://localhost:3000` no seu navegador.
+
+---
+
+## 📚 Documentação Adicional
+
+Para entender o projeto a fundo, consulte os documentos abaixo presentes neste repositório:
+
+- [📄 Documentação Técnica](DOCUMENTACAO_TECNICA.md): Arquitetura, componentes e dicionário do Analytics.
+- [📝 Relatório Acadêmico](RELATORIO_ACADEMICO_IMPACTO.md): Template do relatório de impacto do projeto extensionista.
+- [✍️ Guia de Conteúdo](GUIA_DE_CONTEUDO.md): Como adicionar novas páginas, guias e cursos na plataforma.
+- [⚙️ Manual do Administrador](../Softech-Sistema/MANUAL_DO_ADMINISTRADOR.md): Instruções de uso do painel de métricas (disponível no repositório do backend).
+
+---
+
+## 🎓 Sobre o Autor
+
+Desenvolvido por **Elio Alves Queiroz Junior** (RU: 930051)  
+**Curso:** CST em Gestão da Tecnologia da Informação — UNINTER  
+**Disciplina:** Atividade Extensionista II - Projeto Final  
+**Empresa Parceira:** SofTech Serviços  
