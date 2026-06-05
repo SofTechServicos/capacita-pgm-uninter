@@ -191,6 +191,20 @@ export default function CapacitaPGMPage() {
     }).catch(err => console.error('Erro no tracking:', err));
   };
 
+  // Função disparadora para registrar cliques nos vídeos
+  const trackVideoInteract = (videoTitle: string, videoId: string) => {
+    fetch('https://softechservicos.vercel.app/api/capacita-pgm/analytics', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        event: 'video_interact',
+        guide_name: 'Página Principal',
+        video_title: videoTitle,
+        video_id: videoId
+      })
+    }).catch(err => console.error('Erro no tracking:', err));
+  };
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -691,16 +705,19 @@ export default function CapacitaPGMPage() {
                     Currículo que Chama Atenção dos Recrutadores
                   </h4>
                   <div className="mb-4 rounded-lg overflow-hidden border border-slate-700">
-                    <div className="relative w-full h-0 pb-[56.25%] rounded-lg overflow-hidden">
-                      <iframe
-                        className="absolute top-0 left-0 w-full h-full"
-                        src="https://www.youtube.com/embed/jSiesGzgggQ"
-                        title="Dicas de Currículo para Conseguir Emprego"
-                        frameBorder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        allowFullScreen
-                      ></iframe>
-                    </div>
+                    <div
+                        className="relative w-full h-0 pb-[56.25%] rounded-lg overflow-hidden"
+                        onClick={() => trackVideoInteract('Dicas de Currículo para Conseguir Emprego', 'jSiesGzgggQ')}
+                      >
+                       <iframe
+                         className="absolute top-0 left-0 w-full h-full"
+                         src="https://www.youtube.com/embed/jSiesGzgggQ"
+                         title="Dicas de Currículo para Conseguir Emprego"
+                         frameBorder="0"
+                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                         allowFullScreen
+                       ></iframe>
+                     </div>
                   </div>
                   <p className="text-slate-300 mb-4">
                     Assista ao vídeo com dicas práticas para criar um currículo que chama a atenção dos recrutadores.
@@ -714,16 +731,19 @@ export default function CapacitaPGMPage() {
                     Entrevista de Emprego em Paragominas: Dicas para se Destacar
                   </h4>
                   <div className="mb-4 rounded-lg overflow-hidden border border-slate-700">
-                    <div className="relative w-full h-0 pb-[56.25%] rounded-lg overflow-hidden">
-                      <iframe
-                        className="absolute top-0 left-0 w-full h-full"
-                        src="https://www.youtube.com/embed/b6E0ZF6oApk"
-                        title="Entrevista de Emprego em Paragominas: Dicas para se Destacar"
-                        frameBorder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        allowFullScreen
-                      ></iframe>
-                    </div>
+                    <div
+                        className="relative w-full h-0 pb-[56.25%] rounded-lg overflow-hidden"
+                        onClick={() => trackVideoInteract('Entrevista de Emprego em Paragominas', 'b6E0ZF6oApk')}
+                      >
+                       <iframe
+                         className="absolute top-0 left-0 w-full h-full"
+                         src="https://www.youtube.com/embed/b6E0ZF6oApk"
+                         title="Entrevista de Emprego em Paragominas: Dicas para se Destacar"
+                         frameBorder="0"
+                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                         allowFullScreen
+                       ></iframe>
+                     </div>
                   </div>
                   <p className="text-slate-300">
                     Assista ao vídeo completo com dicas práticas para se destacar em entrevistas de emprego na região de Paragominas.
@@ -774,16 +794,19 @@ export default function CapacitaPGMPage() {
                     Como Cadastrar no GOV.BR para Abrir o MEI
                   </h4>
                   <div className="mb-4">
-                    <div className="relative w-full h-0 pb-[56.25%] rounded-lg overflow-hidden">
-                      <iframe
-                        className="absolute top-0 left-0 w-full h-full"
-                        src="https://www.youtube.com/embed/y7OVwLCd0ag"
-                        title="Como Abrir MEI - Passo a Passo Completo - Sebrae"
-                        frameBorder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        allowFullScreen
-                      ></iframe>
-                    </div>
+                    <div
+                        className="relative w-full h-0 pb-[56.25%] rounded-lg overflow-hidden"
+                        onClick={() => trackVideoInteract('Como Abrir MEI - Passo a Passo (Sebrae)', 'y7OVwLCd0ag')}
+                      >
+                       <iframe
+                         className="absolute top-0 left-0 w-full h-full"
+                         src="https://www.youtube.com/embed/y7OVwLCd0ag"
+                         title="Como Abrir MEI - Passo a Passo Completo - Sebrae"
+                         frameBorder="0"
+                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                         allowFullScreen
+                       ></iframe>
+                     </div>
                   </div>
                   <p className="text-slate-300 mb-4">
                     Tutorial completo do Sebrae sobre o processo 100% online e gratuito para cadastro no GOV.BR e abertura do MEI.
