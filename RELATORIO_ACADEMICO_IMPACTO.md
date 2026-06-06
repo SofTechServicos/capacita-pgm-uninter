@@ -48,6 +48,10 @@ Abaixo estão os resultados detalhados do consumo de conteúdo gerado pela comun
 - **Infográficos Baixados:** [ QTD TOTAL ] downloads
 - **Links Externos Clicados (Gov.br, Sebrae, etc):** [ QTD TOTAL ] cliques
 
+**E. GEOLOCALIZAÇÃO DOS ACESSOS (TOP CIDADES)**
+1. [ NOME DA CIDADE - ESTADO ] - [ QTD ] interações
+2. [ NOME DA CIDADE - ESTADO ] - [ QTD ] interações
+
 5. AVALIAÇÃO DA COMUNIDADE (CSAT)
 ---------------------------------------------------------
 - Total de Feedbacks Recebidos: [ QTD ] avaliações
